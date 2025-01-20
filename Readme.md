@@ -8,7 +8,7 @@ It also add money to the user's wallet with the selected currency of the users a
 
 --To run the project in an application
 --
-A script file has been attached which when executed will create a new database along with the schema and data.
+A script file has been attached named CurrencyXchangeDb.sql which when executed will create a new database along with the schema and data.
 once the script is executed configure the connection string in the appsetting.json accordingly
 
 --assumptions made while developing the Application
