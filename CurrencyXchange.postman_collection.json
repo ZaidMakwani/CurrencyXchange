@@ -148,7 +148,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "",
+					"raw": "{\r\n  \"email\": \"Test@gmail.com\",\r\n  \"password\": \"Test@123\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -168,6 +168,15 @@
 				},
 				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"userName\": \"string\",\r\n  \"email\": \"string\",\r\n  \"password\": \"string\",\r\n  \"mobile\": \"string\",\r\n  \"address\": \"string\",\r\n  \"currencyId\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": "https://localhost:7054/api/User/Register"
 			},
 			"response": []
@@ -181,7 +190,7 @@
 				"auth": {
 					"type": "bearer",
 					"bearer": {
-						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0VXNlciIsIl91c2VySUQiOiIxIiwianRpIjoiODYwM2Q5YzgtYzU2OS00NmI3LWExMjEtMDk1M2M0ZTUzOGM4IiwiZXhwIjoxNzM3MzgxMjM1LCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo3MDU0IiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzA1NC8ifQ.L2m29yOWavOXXoep3cjp1wctblTWSSOsdNFVSpDOFVk"
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0VXNlciIsIl91c2VySUQiOiIxIiwianRpIjoiM2I0MmVmNDMtOTA0Mi00NmQ3LTljYTktYWUxYTM3MTFkNTUzIiwiZXhwIjoxNzM3MzkxODE2LCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo3MDU0IiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzA1NC8ifQ.5mEv8G7OVHy6rPvYhVIhI1gPUEio25GDBl-5tw8iP8E"
 					}
 				},
 				"method": "GET",
