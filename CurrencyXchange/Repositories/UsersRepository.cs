@@ -48,8 +48,15 @@ namespace CurrencyXchange.Repositories
 
         public async Task<ResponseDto> GenerateToken(UserLoginDto user)
         {
-
-            User loggedinUser = await _context.Users.Where(u => u.Email == user.Email && u.Password == user.Password).FirstAsync();
+            User loggedinUser = new User();
+            try
+            {
+                loggedinUser = await _context.Users.Where(u => u.Email == user.Email && u.Password == user.Password).FirstAsync();
+            }
+            catch(Exception e)
+            {
+                return new ResponseDto() { Status = false, Message = "Invalid Credenetials" };
+            }
             if (loggedinUser == null)
             {
                 return new ResponseDto() { Status = false, Message = "Invalid Credenetials" };
@@ -69,19 +76,19 @@ namespace CurrencyXchange.Repositories
                 Email = user.Email,
                 Mobile = user.Mobile,
                 Name = user.UserName,
-                Password  = user.Password,
+                Password = user.Password,
             };
 
             try
             {
                 _context.Users.Add(newUser);
                 int result = await _context.SaveChangesAsync();
-                if(result == 0)
+                if (result == 0)
                 {
                     return new ResponseDto { Message = "Some Error Occured while Creating the user", Status = false };
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return new ResponseDto { Message = "Some Error Occured while Creating the user", Status = false };
             }
