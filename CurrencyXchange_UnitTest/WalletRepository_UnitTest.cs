@@ -120,7 +120,7 @@ namespace CurrencyXchange_UnitTest
 
 
         [Fact]
-        public async Task CreateUserWallet_ShouldSucceed_WhenFundsAreAvailable()
+        public async Task CreateUserWallet_ShouldSucceed_WhenWalletCreated()
         {
             // Arrange: Create a second user and wallet
             var newUser = new User
