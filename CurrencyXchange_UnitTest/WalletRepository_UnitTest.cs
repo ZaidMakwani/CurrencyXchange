@@ -80,44 +80,45 @@ namespace CurrencyXchange_UnitTest
 
         //This Method cannot be tested as it is using transaction and UseSqlServer is not 
         //capable of handling an transaction inside the method
-        [Fact]
-        public async Task TransferMoney_ShouldSucceed_WhenFundsAreAvailable()
-        {
-            // Arrange: Create a second user and wallet
-            var receiver = new User
-            {
-                UserId = 2,
-                Name = "TestUser2",
-                CurrencyId = 1,
-                Address = "TestAdd",
-                Currency = new Currency { Id = 2, Code = "USD", Name = "US Dollar" }
-            };
+        #region Unit test for Transfering Money
+        //[Fact]
+        //public async Task TransferMoney_ShouldSucceed_WhenFundsAreAvailable()
+        //{
+        //    // Arrange: Create a second user and wallet
+        //    var receiver = new User
+        //    {
+        //        UserId = 2,
+        //        Name = "TestUser2",
+        //        CurrencyId = 1,
+        //        Address = "TestAdd",
+        //        Currency = new Currency { Id = 2, Code = "USD", Name = "US Dollar" }
+        //    };
 
 
-            _context.Users.Add(receiver);
-            _context.SaveChanges();
+        //    _context.Users.Add(receiver);
+        //    _context.SaveChanges();
 
-            var transferRequest = new CreateWalletDto
-            {
-                UserId = 2,
-                Amount = 2000
-            };
+        //    var transferRequest = new CreateWalletDto
+        //    {
+        //        UserId = 2,
+        //        Amount = 2000
+        //    };
 
-            // Act
-            var result = await _repository.CreateUserWallet(transferRequest);
+        //    // Act
+        //    var result = await _repository.CreateUserWallet(transferRequest);
 
-            // Assert
-            Assert.True(result.Status);
-            Assert.Equal("Wallet created Successfully", result.Message);
+        //    // Assert
+        //    Assert.True(result.Status);
+        //    Assert.Equal("Wallet created Successfully", result.Message);
 
-            // Verify balances updated
-            var senderWallet = await _context.Wallets.FirstAsync(w => w.UserId == 1);
-            var updatedReceiverWallet = await _context.Wallets.FirstAsync(w => w.UserId == 2);
+        //    // Verify balances updated
+        //    var senderWallet = await _context.Wallets.FirstAsync(w => w.UserId == 1);
+        //    var updatedReceiverWallet = await _context.Wallets.FirstAsync(w => w.UserId == 2);
 
-            Assert.Equal(8000, senderWallet.Balance);   // 1000 - 200
-            Assert.Equal(7000, updatedReceiverWallet.Balance); // 500 + 200
-        }
-
+        //    Assert.Equal(8000, senderWallet.Balance);   // 1000 - 200
+        //    Assert.Equal(7000, updatedReceiverWallet.Balance); // 500 + 200
+        //}
+        #endregion
 
         [Fact]
         public async Task CreateUserWallet_ShouldSucceed_WhenWalletCreated()
