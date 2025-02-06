@@ -12,12 +12,12 @@ using Moq;
 
 namespace CurrencyXchange_UnitTest
 {
-    public  class UserControllerUnitTest
+    public class UserController_UnitTest
     {
         private readonly Mock<IUserRepository> _mockRepo;
         private readonly UserController _controller;
 
-        public UserControllerUnitTest()
+        public UserController_UnitTest()
         {
             _mockRepo = new Mock<IUserRepository>();
             _controller = new UserController(_mockRepo.Object);
@@ -27,7 +27,7 @@ namespace CurrencyXchange_UnitTest
         public async Task Login_ReturnsOkResult_WhenTokenGeneratedSuccessfully()
         {
             var userLoginDto = new UserLoginDto { Email = "Test@gmail.com", Password = "Test@123" };
-            var responseDto = new ResponseDto { Status = true, Message = "Success"};
+            var responseDto = new ResponseDto { Status = true, Message = "Success" };
             _mockRepo.Setup(repo => repo.GenerateToken(userLoginDto)).ReturnsAsync(responseDto);
 
             var result = await _controller.Login(userLoginDto);
@@ -43,7 +43,7 @@ namespace CurrencyXchange_UnitTest
         public async Task Login_ReturnsUnauthorized_WhenTokenGenerationFails()
         {
             var userLoginDto = new UserLoginDto { Email = "testuser", Password = "wrongpassword" };
-            var responseDto = new ResponseDto { Status = false, Message = "Invalid credentials"};
+            var responseDto = new ResponseDto { Status = false, Message = "Invalid credentials" };
             _mockRepo.Setup(repo => repo.GenerateToken(userLoginDto)).ReturnsAsync(responseDto);
 
             var result = await _controller.Login(userLoginDto);

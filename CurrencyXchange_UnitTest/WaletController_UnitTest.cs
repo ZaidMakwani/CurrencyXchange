@@ -13,12 +13,12 @@ using Moq;
 
 namespace CurrencyXchange_UnitTest
 {
-    public class WalletController_UnitTest
+    public class WaletController_UnitTest
     {
         private readonly Mock<IWalletRepository> _mockrepo;
         private readonly WalletController _controller;
 
-        public WalletController_UnitTest()
+        public WaletController_UnitTest()
         {
             _mockrepo = new Mock<IWalletRepository>();
             _controller = new WalletController(_mockrepo.Object);
